@@ -1,0 +1,32 @@
+
+/* Configuración global */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Modo claro */
+:root {
+    --fondo: #FFFFFF;
+    --texto: #222222;
+    --superficie: #f4f5f7;
+    --texto-secundario: #777777;
+}
+
+/* Modo oscuro */
+[data-theme="dark"] {
+    --fondo: #12151b;
+    --texto: #f4f5f7;
+    --superficie: #202631;
+    --texto-secundario: #aeb6c2;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: var(--texto);
+    background-color: var(--fondo);
+}
+

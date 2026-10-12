@@ -1,0 +1,42 @@
+
+#presentacion {
+    text-align: center;
+    padding: 75px 20px 85px;
+}
+
+#presentacion h1 {
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    margin: 0 0 22px;
+}
+
+#presentacion p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--texto);
+    margin: 0;
+}
+
+#presentacion .perfil {
+    font-size: 13px;
+    margin-top: 26px;
+}
+
+#presentacion a {
+    color: var(--texto);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+
+#presentacion a:hover,
+#presentacion a:focus-visible {
+    color: #FF5360;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+#presentacion .acento {
+    color: #FF5360;
+}
+
