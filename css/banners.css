@@ -135,10 +135,6 @@
 
 #banner-b::before {
     background-image: url("../img/cines.jpg");
-    background-size: 100% auto;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
 }
 
 #banner-b::after {
@@ -271,7 +267,7 @@
     background-image: url("../img/boda.jpg");
     background-size: cover;
     background-position: center center;
-    background-attachment: scroll;
+    /*background-attachment: scroll;*/
 }
 
 #banner-c::after {
