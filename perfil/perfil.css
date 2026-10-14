@@ -153,3 +153,50 @@ body {
     margin-top: 18px;
 }
 
+/* Control del tema */
+.acciones {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+#theme-toggle {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 23px;
+    cursor: pointer;
+}
+
+/* Modo oscuro */
+[data-theme="dark"] body {
+    background: #101722;
+    color: #e8edf5;
+}
+
+[data-theme="dark"] .contenido {
+    background: #1b2738;
+}
+
+[data-theme="dark"] .presentacion {
+    border-bottom-color: #344256;
+}
+
+[data-theme="dark"] .etiqueta,
+[data-theme="dark"] .informacion p,
+[data-theme="dark"] .pie {
+    color: #aab9cc;
+}
+
+[data-theme="dark"] .presentacion p {
+    color: #c4cfdd;
+}
+
+[data-theme="dark"] .informacion a {
+    color: #e8edf5;
+    border-bottom-color: #71839b;
+}
+
+[data-theme="dark"] .informacion a:hover {
+    border-bottom-color: #e8edf5;
+}

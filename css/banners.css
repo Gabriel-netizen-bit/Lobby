@@ -14,6 +14,7 @@
     overflow: hidden;
     isolation: isolate;
     color: #fff;
+    
 }
 
 /* Imagen detrás del contenido */
@@ -26,6 +27,7 @@
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
+    filter: blur(2px);
 }
 
 /* Sombra para leer sin ocultar la fotografía */
@@ -91,6 +93,7 @@
 
 #banner-a::before {
     background-image: url("../img/bitcoin.jpg");
+    
 }
 
 #banner-a::after {
@@ -267,9 +270,10 @@
     background-image: url("../img/boda.jpg");
     background-size: cover;
     background-position: center center;
-    /*background-attachment: scroll;*/
+    
 }
 
+ /*BODA: degradado original, conservado para pruebas*/
 #banner-c::after {
     background: linear-gradient(
         90deg,
@@ -279,6 +283,16 @@
         transparent 100%
     );
 }
+
+
+/* BODA: degradado actual */
+/*#banner-c::after {
+    background: linear-gradient(
+        90deg,
+        rgba(250, 243, 232, 0.92),
+        rgba(250, 243, 232, 0.40)
+    );
+}*/
 
 #banner-c .banner-categoria {
     color: #826a58;

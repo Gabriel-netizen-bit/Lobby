@@ -47,3 +47,8 @@
         gap: 16px;
     }
 }
+@media (min-width: 200px) {
+    /*footer {
+        margin-bottom: 200px;
+    }*/
+}
