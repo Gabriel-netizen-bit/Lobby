@@ -93,18 +93,22 @@ body {
 }
 
 .pie {
-    padding: 25px 7%;
+    min-height: 152px;
+    padding: 20px 40px;
+
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: 20px;
+    justify-content: center;
+    gap: 40px;
+
     font-size: 12px;
     color: #64748b;
 }
 
 .enlaces {
     display: flex;
-    gap: 30px;
+    align-items: center;
+    gap: 24px;
 }
 
 .enlaces a {
@@ -132,8 +136,17 @@ body {
     }
 
     .pie {
-        flex-direction: column;
-        text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 24px 16px;
+    gap: 16px;
+    }
+
+    .enlaces {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
     }
 }
 
