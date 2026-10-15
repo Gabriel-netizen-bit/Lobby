@@ -4,93 +4,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil profesional | Percy Jiménez</title>
+    <title>Perfil profesional | Percy Jiménez Morera</title>
     <link rel="stylesheet" href="perfil.css">
 </head>
 <body>
 
-    <header class="encabezado">
-        <a class="nombre" href="index.html">Percy Jiménez</a>
+    
+<header class="encabezado">
+        <a class="nombre" href="index.html">Percy Jiménez Morera</a>
         <div class="acciones">
-            <a class="regresar" href="../index.html">← Volver al Lobby</a>
+            <a class="regresar" href="../index.html" data-i18n="perfil.volver">← Volver al Lobby</a>
+            <button type="button" id="language-toggle"
+            aria-label="Cambiar idioma">
+            ES / EN
+            </button>
             <button id="theme-toggle" type="button" aria-label="Cambiar tema">☾</button>
         </div>
     </header>
 
-    <main class="contenido">
+
+    
+<main class="contenido">
         
-<section class="presentacion">
-    <span class="etiqueta">PERFIL PROFESIONAL</span>
+    <section class="presentacion">
+    <span class="etiqueta" data-i18n="perfil.etiqueta">PERFIL PROFESIONAL</span>
 
-    <h1>Desarrollo de Software</h1>
+    <h1 data-i18n="perfil.titulo">Desarrollo de Software</h1>
 
-    <p>
+    <p data-i18n="perfil.descripcion">
         Diseño y desarrollo de soluciones digitales a partir
         de necesidades concretas, integrando análisis, diseño,
         programación y aseguramiento de calidad.
     </p>
 
-    <p>
+    <p data-i18n="perfil.trayectoria">
         Mi experiencia combina el desarrollo de proyectos para
-        clientes y de iniciativa propia con una formación técnica
+        clientes y de iniciativa propia, con una formación técnica
         en software y estudios en matemáticas. Esta combinación
         aporta una perspectiva analítica al diseño de soluciones,
         desde la comprensión del problema hasta su implementación
         y funcionamiento.
     </p>
-</section>
+    </section>
 
 
-        <section class="informacion">
-            <article>
-                <h2>Experiencia</h2>
-                <p>Desarrollo de software independiente, aseguramiento
+    <section class="informacion">
+        <article>
+                <h2 data-i18n="perfil.experiencia.titulo">Experiencia</h2>
+                <p data-i18n="perfil.experiencia.texto">Desarrollo de software independiente, aseguramiento
                    de calidad y experiencia docente.</p>
-            </article>
+        </article>
 
-            <article>
-                <h2>Competencias</h2>
-                <p>Desarrollo web, bases de datos, integración de APIs
+        <article>
+                <h2 data-i18n="perfil.competencias.titulo">Competencias</h2>
+                <p data-i18n="perfil.competencias.texto">Desarrollo web, bases de datos, integración de APIs
                    y metodologías de trabajo.</p>
-            </article>
+        </article>
 
-            <article>
-    <h2>Formación</h2>
-    <p>
+        <article>
+    <h2 data-i18n="perfil.formacion.titulo">Formación</h2>
+        <p data-i18n="perfil.formacion.texto">
         <a href="https://www.acreditta.com/credential/3d519e26-9365-4f3f-b866-484dc67cf2d6"
            target="_blank" rel="noopener noreferrer">
             Técnico Superior en Desarrollo de Software
         </a>
         <br>
         Universidad CENFOTEC
-    </p>
-</article>
+        </p>
+        </article>
 
-            <article>
-    <h2>Certificaciones</h2>
-    <p>
-        <a href="https://www.scrumstudy.com/certification/verify?type=SFC&amp;number=916190"
-           target="_blank" rel="noopener noreferrer">
+        <article>
+            <h2 data-i18n="perfil.certificaciones.titulo">Certificaciones</h2>
+            <p data-i18n="perfil.certificaciones.texto">
+            <a href="https://www.scrumstudy.com/certification/verify?type=SFC&amp;number=916190"
+            target="_blank" rel="noopener noreferrer">
             Scrum Fundamentals Certified
-        </a>
-        <br>
-        SCRUMstudy · 2022
-    </p>
-</article>
-        </section>
+            </a>
+            <br>
+            SCRUMstudy · 2022
+            </p>
+        </article>
+    </section>
     </main>
 
-    <footer class="pie">
-        <span>© 2026 · Percy Jiménez</span>
+
+    
+<footer class="pie">
+        <span>© 2026 · Percy Jiménez Morera</span>
         <div class="enlaces">
-            <a href="mailto:pergabriel32@gmail.com">Contacto</a>
-            <a href="./CV_Percy_Jimenez.pdf" download="CV_Percy_Jimenez.pdf">
+            <a href="mailto:pergabriel32@gmail.com" data-i18n="perfil.contacto">Contacto</a>
+            <a id="descargar-cv" href="./CV_Percy_Jimenez.pdf" download="CV_Percy_Jimenez.pdf" data-i18n="perfil.descargar">
                 ↓ Descargar currículum PDF
             </a>
 
         </div>
     </footer>
 
+
+<script src="../js/traducciones.js"></script>
 <script src="../js/main.js"></script>
     
 </body>

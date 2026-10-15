@@ -167,18 +167,45 @@ body {
 }
 
 /* Control del tema */
+/* Controles del encabezado */
+
 .acciones {
     display: flex;
     align-items: center;
-    gap: 22px;
+    gap: 8px;
 }
 
-#theme-toggle {
-    background: none;
-    border: none;
+/* Selector de idioma */
+#language-toggle {
+    background: transparent;
+    border: 1px solid #71839b;
+    border-radius: 999px;
     color: #ffffff;
-    font-size: 23px;
+    padding: 0 12px;
+    height: 34px;
+    font-size: 12px;
+    font-weight: 500;
     cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+/* Selector de tema */
+#theme-toggle {
+    background: transparent;
+    border: 1px solid #71839b;
+    border-radius: 50%;
+    color: #ffffff;
+    width: 34px;
+    height: 34px;
+    font-size: 19px;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+/* Efecto al pasar el mouse */
+#language-toggle:hover,
+#theme-toggle:hover {
+    border-color: #ffffff;
 }
 
 /* Modo oscuro */

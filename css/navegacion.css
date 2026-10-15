@@ -1,0 +1,57 @@
+/* Navegación lateral del Lobby */
+.navegacion-lateral {
+    position: fixed;
+    right: 11px;
+    top: 170px;
+    z-index: 900;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+}
+
+/* Esferas de navegación */
+
+.navegacion-lateral a {
+    display: block;
+    width: 15px;
+    height: 15px;
+    box-sizing: border-box;
+    border: 2px solid #793B40;
+    border-radius: 50%;
+    background: transparent;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.35);
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+/* Al pasar el mouse */
+
+.navegacion-lateral a:hover {
+    background: rgba(255, 83, 96, 0.30);
+    border-color: #793B40;
+    box-shadow: 0 0 9px rgba(255, 83, 96, 0.35);
+    transform: scale(1.2);
+}
+
+/* Esfera seleccionada */
+
+.navegacion-lateral a.activo {
+    background: rgba(255, 83, 96, 0.75);
+    border-color: #FF5360;
+    box-shadow:
+        inset 0 1px 2px rgba(255, 220, 220, 0.35),
+        0 0 8px rgba(255, 83, 96, 0.30);
+    transform: scale(1.15);
+}
+
+/* Ocultar navegación lateral en móviles */
+
+@media (max-width: 700px) {
+    .navegacion-lateral {
+        display: none;
+    }
+}

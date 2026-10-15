@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/intro.css">
     <link rel="stylesheet" href="css/banners.css">
     <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/navegacion.css">
 </head>
 
 <body>
@@ -20,34 +21,38 @@
         </div>
 
         <nav class="main-nav" aria-label="Navegación principal">
-            <a href="#presentacion">Inicio</a>
-            <a href="#proyectos">Proyectos</a>
-            <a href="perfil/index.html">Perfil profesional</a>       
-            <a href="mailto:pergabriel32@gmail.com">Contacto</a>
-
+            <a href="#presentacion" data-i18n="nav.inicio">Inicio</a>
+            <a href="#proyectos" data-i18n="nav.proyectos">Proyectos</a>
+            <a href="perfil/index.html" data-i18n="nav.perfil">Perfil profesional</a>
+            <a href="mailto:pergabriel32@gmail.com" data-i18n="nav.contacto">Contacto</a>
         </nav>
 
         
-<div class="redes">
-    <button type="button" id="theme-toggle"
-            aria-label="Cambiar entre modo claro y oscuro">
-        ☾
-    </button>
-</div>
+        <div class="redes">
+            <button type="button" id="language-toggle"
+                aria-label="Cambiar idioma">
+                ES / EN
+            </button>
+
+            <button type="button" id="theme-toggle"
+                aria-label="Cambiar entre modo claro y oscuro">
+                ☾
+            </button>
+        </div>
 
     </header>
-
+<!--***************-->
 <main>
         
     <section id="presentacion">
-        <h1>Ideas que <span class="acento">toman forma.</span></h1>
+        <h1 data-i18n="inicio.titulo">Ideas que <span class="acento">toman forma.</span></h1>
 
-        <p>
+        <p data-i18n="inicio.descripcion">
         Desarrollo de software, soluciones digitales
         y proyectos que nacen de nuevas ideas.
         </p>
 
-        <p class="perfil">
+        <p class="perfil" data-i18n="inicio.perfil">
         Cada proyecto tiene una historia.
         Conocé también mi
         <a href="perfil/index.html" title="Conocer mi perfil profesional">
@@ -62,10 +67,10 @@
 
     <div class="banner" id="banner-a">
         <div class="banner-contenido">
-            <span class="banner-categoria">Desarrollo de software</span>
-            <h2>Precisión y tecnología.</h2>
-            <p>Herramientas digitales para el ecosistema Bitcoin.</p>
-            <button class="banner-boton" type="button">
+            <span class="banner-categoria" data-i18n="bitcoin.categoria">Desarrollo de software</span>
+            <h2 data-i18n="bitcoin.titulo">Precisión y tecnología.</h2>
+            <p data-i18n="bitcoin.descripcion">Herramientas digitales para el ecosistema Bitcoin.</p>
+            <button class="banner-boton" type="button" data-i18n="bitcoin.boton">
                 Explorar proyecto <span aria-hidden="true">→</span>
             </button>
         </div>
@@ -73,23 +78,24 @@
 
     <div class="banner" id="banner-b">
         <div class="banner-contenido">
-            <span class="banner-categoria">Sistemas y aplicaciones</span>
-            <h2>Cines</h2>
-            <p>Una experiencia de gestión, programación y reservas.</p>
-            <button class="banner-boton" type="button">
+            <span class="banner-categoria" data-i18n="cines.categoria">Sistemas y aplicaciones</span>
+            <h2 data-i18n="cines.titulo">Cines</h2>
+            <p data-i18n="cines.descripcion">Una experiencia de gestión, programación y reservas.</p>
+            <button class="banner-boton" type="button" data-i18n="cines.boton">
                 Explorar proyecto <span aria-hidden="true">→</span>
             </button>
         </div>
     </div>
     <div class="banner" id="banner-c">
     <div class="banner-contenido">
-        <span class="banner-categoria">Diseño web · Invitación digital</span>
-        <h2>Una historia para celebrar.</h2>
-        <p>Una invitación digital creada para un día inolvidable.</p>
+        <span class="banner-categoria" data-i18n="boda.categoria">Diseño web · Invitación digital</span>
+        <h2 data-i18n="boda.titulo">Una historia para celebrar.</h2>
+        <p data-i18n="boda.descripcion">Una invitación digital creada para un día inolvidable.</p>
         <a class="banner-boton"
            href="https://gabriel-netizen-bit.github.io/invitacion-nicole/?v=4"
            target="_blank"
-           rel="noopener noreferrer">
+           rel="noopener noreferrer"
+           data-i18n="boda.boton">
             Ver invitación <span aria-hidden="true">→</span>
         </a>
     </div>
@@ -98,16 +104,28 @@
 </section>
 
 </main>
+<!-- Navegación lateral del Lobby -->
+<nav class="navegacion-lateral" aria-label="Navegación por secciones">
+    <a href="#presentacion" aria-label="Ir a presentación"></a>
+    <a href="#banner-a" aria-label="Ir a Bitcoin"></a>
+    <a href="#banner-b" aria-label="Ir a Cines"></a>
+    <a href="#banner-c" aria-label="Ir a invitación digital"></a>
+</nav>
 
-    <footer class="site-footer" id="contacto">
-        <span>© 2026 · Todos los derechos reservados</span>
+<!--***************-->
+
+
+<footer class="site-footer" id="contacto">
+        <span data-i18n="footer.derechos">© 2026 · Todos los derechos reservados</span>
 
         <nav class="footer-nav" aria-label="Enlaces del pie de página">
-            <a href="mailto:correo@ejemplo.com">Contacto</a>
-            <span>Privacidad</span>
-            <span>Aviso legal</span>
+            <a href="mailto:pergabriel32@gmail.com" data-i18n="footer.contacto">Contacto</a>
+            <span data-i18n="footer.privacidad">Privacidad</span>
+            <span data-i18n="footer.legal">Aviso legal</span>
         </nav>
-    </footer>
+</footer>
+
+    <script src="js/traducciones.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

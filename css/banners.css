@@ -27,7 +27,8 @@
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
-    filter: blur(2px);
+    filter: blur(var(--desenfoque, 2px));
+    background-image: var(--imagen);
 }
 
 /* Sombra para leer sin ocultar la fotografía */
@@ -92,7 +93,7 @@
 }
 
 #banner-a::before {
-    background-image: url("../img/bitcoin.jpg");
+   background-image: url("../img/bitcoin.jpg");
     
 }
 
