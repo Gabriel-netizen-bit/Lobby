@@ -1,8 +1,10 @@
+
 /* Navegación lateral del Lobby */
+
 .navegacion-lateral {
     position: fixed;
-    right: 11px;
-    top: 170px;
+    right: 15px;
+    top: 190px;
     z-index: 900;
     display: flex;
     flex-direction: column;
@@ -10,17 +12,31 @@
     gap: 22px;
 }
 
-/* Esferas de navegación */
+/* Esferas: gotas de agua translúcidas */
 
 .navegacion-lateral a {
     display: block;
-    width: 15px;
-    height: 15px;
+    width: 18px;
+    height: 18px;
     box-sizing: border-box;
-    border: 2px solid #793B40;
+    border: 1px solid rgba(255, 255, 255, 0.30);
     border-radius: 50%;
-    background: transparent;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.35);
+
+    background: radial-gradient(
+        circle at 32% 25%,
+        rgba(255, 255, 255, 0.35),
+        rgba(210, 220, 225, 0.14) 45%,
+        rgba(90, 105, 115, 0.20) 100%
+    );
+
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+
+    box-shadow:
+        inset 0 1px 2px rgba(255, 255, 255, 0.40),
+        inset 0 -2px 3px rgba(0, 0, 0, 0.25),
+        0 1px 4px rgba(0, 0, 0, 0.30);
+
     transition:
         background 0.25s ease,
         border-color 0.25s ease,
@@ -28,24 +44,37 @@
         transform 0.25s ease;
 }
 
-/* Al pasar el mouse */
+/* Hover: la gota crece y refleja más luz */
 
 .navegacion-lateral a:hover {
-    background: rgba(255, 83, 96, 0.30);
-    border-color: #793B40;
-    box-shadow: 0 0 9px rgba(255, 83, 96, 0.35);
+    border-color: rgba(255, 255, 255, 0.75);
+
+    box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.65),
+    inset 0 -2px 3px rgba(0, 0, 0, 0.25),
+    0 1px 4px rgba(0, 0, 0, 0.30);
+
     transform: scale(1.2);
 }
 
-/* Esfera seleccionada */
+/* Seleccionada: luminosidad original y tamaño crecido */
 
 .navegacion-lateral a.activo {
-    background: rgba(255, 83, 96, 0.75);
-    border-color: #FF5360;
+    border-color: rgba(255, 255, 255, 0.45);
+
+    background: radial-gradient(
+        circle at 32% 25%,
+        rgba(255, 255, 255, 0.55),
+        rgba(210, 220, 225, 0.22) 45%,
+        rgba(90, 105, 115, 0.30) 100%
+    );
+
     box-shadow:
-        inset 0 1px 2px rgba(255, 220, 220, 0.35),
-        0 0 8px rgba(255, 83, 96, 0.30);
-    transform: scale(1.15);
+    inset 0 1px 3px rgba(255, 255, 255, 0.85),
+    inset 0 -2px 3px rgba(0, 0, 0, 0.20),
+    0 0 7px rgba(255, 255, 255, 0.35);
+
+    transform: scale(1.2);
 }
 
 /* Ocultar navegación lateral en móviles */
