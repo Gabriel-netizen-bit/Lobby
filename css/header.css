@@ -116,13 +116,13 @@
 }
 
 .logo img {
-    width: 92px;
+    width: 125px;
     height: auto;
     display: block;
 }
 
 @media (max-width: 700px) {
     .logo img {
-        width: 75px;
+        width: 110px;
     }
 }
