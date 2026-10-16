@@ -114,3 +114,14 @@
 #language-toggle:hover {
     border-color: #ffffff;
 }
+.logo img {
+    width: 80px;
+    height: auto;
+    display: block;
+}
+
+@media (max-width: 700px) {
+    .logo img {
+        width: 65px;
+    }
+}
