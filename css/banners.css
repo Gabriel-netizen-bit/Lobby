@@ -1,51 +1,77 @@
+/* ============================================================
+   LOBBY | SISTEMA DE VALLAS
+   ------------------------------------------------------------
+   1. BASE COMÚN: tamaño, fotografía, tipografía y botón.
+   2. ZIGZAG: posiciones impares izquierda; pares derecha.
+   3. PERSONALIDAD: una configuración por proyecto.
+   4. RESPONSIVE: ajustes compartidos en un único bloque.
 
-/* Ventanas visuales del Lobby */
+   PARA AÑADIR UNA VALLA:
+   - Duplicar un bloque .banner en index.html (dentro de #proyectos).
+   - Conservar las clases internas banner-contenido, banner-categoria
+     y banner-boton; asignar un ID y una clase banner--nombre.
+   - Crear aquí una sección .banner--nombre con sus variables.
+   - Agregar su enlace a la navegación lateral y sus traducciones.
+   - No hay que modificar las reglas comunes ni el zigzag.
+   ------------------------------------------------------------
+   La geometría decorativa de esquinas todavía NO se aplica.
+   ============================================================ */
 
+/* 1. ESTRUCTURA Y MORFOLOGÍA COMÚN */
 #proyectos {
     padding: 0;
 }
 
 .banner {
+    /* Dos controles globales para todas las vallas */
+    --alto-valla: 260px;
+    --aire-vertical: 25px;
+
     position: relative;
     display: flex;
     align-items: center;
-    min-height: 260px;
+    min-height: var(--alto-valla);
     margin: 0;
     overflow: hidden;
     isolation: isolate;
-    color: #fff;
-    
+
+    /* Valores particulares establecidos por cada banner--nombre */
+    background: var(--fondo-valla, #101b28);
+    color: var(--texto-valla, #fff);
+    font-family: var(--fuente-valla, Arial, sans-serif);
 }
 
-/* Imagen detrás del contenido */
+/* Fotografía, colocada detrás de la valla */
 .banner::before {
     content: "";
     position: absolute;
     inset: 0;
     z-index: -2;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: var(--posicion-imagen, center);
     background-size: cover;
     background-attachment: fixed;
     filter: blur(var(--desenfoque, 2px));
-    background-image: var(--imagen);
+    background-image: var(--imagen, none);
 }
 
-/* Sombra para leer sin ocultar la fotografía */
+/* Oscurecimiento/aclarado exclusivo de cada proyecto */
 .banner::after {
     content: "";
     position: absolute;
     inset: 0;
     z-index: -1;
     pointer-events: none;
+    background: var(--capa-legibilidad, none);
 }
 
 .banner-contenido {
     width: min(100% - 80px, 1100px);
     margin: 0 auto;
-    padding: 25px 0;
+    padding: var(--aire-vertical) 0;
 }
 
+/* Etiqueta / categoría: la misma morfología para toda la colección */
 .banner-categoria {
     display: block;
     margin-bottom: 15px;
@@ -53,12 +79,19 @@
     font-weight: 500;
     letter-spacing: 2.4px;
     text-transform: uppercase;
+    color: var(--categoria-color, inherit);
+    font-family: var(--categoria-fuente, inherit);
 }
 
+/* Título: forma compartida, personalidad tipográfica personalizable */
 .banner h2 {
     margin: 0 0 17px;
-    font-weight: 400;
-    line-height: 1.15;
+    max-width: var(--titulo-ancho, none);
+    font-size: var(--titulo-tamano, 1.5em);
+    font-weight: var(--titulo-peso, 400);
+    letter-spacing: var(--titulo-espaciado, normal);
+    line-height: var(--titulo-interlineado, 1.15);
+    color: var(--titulo-color, inherit);
 }
 
 .banner p {
@@ -66,276 +99,201 @@
     margin: 0;
     font-size: 14px;
     line-height: 1.8;
+    color: var(--descripcion-color, inherit);
 }
 
+/* Mismo botón redondeado en todas las vallas */
 .banner-boton {
-    text-decoration: none;
     display: inline-flex;
     align-items: center;
     gap: 18px;
     margin-top: 28px;
     padding: 11px 23px;
-    border-radius: 28px;
-    background: transparent;
+    border: 1px solid var(--boton-borde, currentColor);
+    border-radius: 999px;
+    text-decoration: none;
+    background: var(--boton-fondo, transparent);
+    box-shadow: var(--boton-sombra, none);
+    color: var(--boton-color, inherit);
     font: inherit;
     font-size: 13px;
+    font-family: var(--boton-fuente, inherit);
     cursor: pointer;
-    transition:
-        background-color 0.25s,
-        color 0.25s,
-        border-color 0.25s;
+    transition: background-color 0.25s, color 0.25s, border-color 0.25s;
 }
 
-/* BITCOIN: desarrollo tecnológico */
-
-#banner-a {
-    background: #101b28;
-    font-family: Arial, sans-serif;
+.banner-boton:hover {
+    background: var(--boton-fondo-hover, var(--boton-fondo, transparent));
+    color: var(--boton-color-hover, var(--boton-color, inherit));
+    border-color: var(--boton-borde-hover, var(--boton-borde, currentColor));
+    box-shadow: var(--boton-sombra-hover, var(--boton-sombra, none));
 }
 
-#banner-a::before {
-   background-image: url("../img/bitcoin.jpg");
-    
+/* 2. ZIGZAG AUTOMÁTICO
+   La 1.ª valla empieza a la izquierda; la 2.ª a la derecha;
+   la 3.ª a la izquierda, etc. Evitar otros elementos directos
+   entre las vallas, para conservar la alternancia. */
+#proyectos > .banner:nth-child(even) .banner-contenido {
+    text-align: right;
+    padding-right: 20px;
 }
 
-#banner-a::after {
-    background: linear-gradient(
+#proyectos > .banner:nth-child(even) p {
+    margin-left: auto;
+}
+
+/* 3. PERSONALIDAD POR PROYECTO
+   Editar únicamente estas variables para cambiar colores,
+   fotografías, títulos, botones y atmósfera de cada valla. */
+
+/* 3A. BITCOIN — tecnología, tonos azules y dorados */
+.banner--bitcoin {
+    --fondo-valla: #101b28;
+    --fuente-valla: Arial, sans-serif;
+    --imagen: url("../img/bitcoin.jpg");
+    --capa-legibilidad: linear-gradient(
         90deg,
         rgba(5, 14, 25, 0.82) 0%,
         rgba(5, 14, 25, 0.45) 42%,
         transparent 80%
     );
+
+    --categoria-color: #dfc18a;
+    --titulo-ancho: 420px;
+    --titulo-ancho-movil: 300px;
+    --titulo-tamano: clamp(34px, 4vw, 52px);
+    --titulo-peso: 300;
+    --titulo-espaciado: -1.5px;
+    --titulo-interlineado: 1.12;
+    --titulo-color: #f2eee5;
+    --descripcion-color: #c4d0da;
+
+    --boton-borde: #e9bb54;
+    --boton-color: #fff1cb;
+    --boton-fondo: linear-gradient(
+        135deg,
+        rgba(204, 147, 35, 0.42),
+        rgba(71, 47, 13, 0.62)
+    );
+    --boton-sombra: inset 0 1px 0 rgba(255, 231, 158, 0.45),
+        0 0 16px rgba(230, 169, 53, 0.20);
+    --boton-fondo-hover: #c69a43;
+    --boton-color-hover: #111;
+    --boton-sombra-hover: 0 0 22px rgba(230, 169, 53, 0.42);
 }
 
-#banner-a .banner-categoria {
-    color: #c6a76c;
-}
-
-#banner-a h2 {
-    max-width: 420px;
-    font-size: clamp(28px, 3.2vw, 43px);
-    color: #f2eee5;
-}
-
-#banner-a p {
-    color: #c4d0da;
-}
-
-#banner-a .banner-boton {
-    border: 1px solid #c6a76c;
-    color: #e4c994;
-}
-
-#banner-a .banner-boton:hover {
-    background: #c6a76c;
-    color: #111b25;
-}
-
-/* CINES: arquitectura y experiencia */
-
-#banner-b {
-    background: #29110e;
-    font-family: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
-}
-
-#banner-b::before {
-    background-image: url("../img/cines.jpg");
-}
-
-#banner-b::after {
-    background: linear-gradient(
+/* 3B. CINES — teatral, alineación a la derecha por ser 2.ª valla */
+.banner--cines {
+    --fondo-valla: #29110e;
+    --fuente-valla: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+    --imagen: url("../img/cines.jpg");
+    --capa-legibilidad: linear-gradient(
         270deg,
         rgba(25, 7, 7, 0.80) 0%,
         rgba(25, 7, 7, 0.32) 43%,
         transparent 78%
     );
-}
 
-#banner-b .banner-contenido {
-    text-align: right;
-    padding-right: 20px;
-}
+    --categoria-color: #e0c7b3;
+    --categoria-fuente: Arial, sans-serif;
+    --titulo-tamano: clamp(40px, 4.5vw, 58px);
+    --titulo-peso: 400;
+    --titulo-espaciado: -1px;
+    --titulo-color: #f6e6d7;
+    --descripcion-color: #e3cfc5;
 
-#banner-b .banner-categoria {
-    color: #e0c7b3;
-    font-family: Arial, sans-serif;
-}
-
-#banner-b h2 {
-    font-size: clamp(34px, 4vw, 54px);
-    color: #f6e6d7;
-}
-
-#banner-b p {
-    margin-left: auto;
-    color: #e3cfc5;
-}
-
-#banner-b .banner-boton {
-    border: 1px solid #a86a61;
-    color: #f2d6ce;
-    font-family: Arial, sans-serif;
-}
-
-#banner-b .banner-boton:hover {
-    background: #642c2a;
-    color: #fff;
-}
-
-/* Teléfonos y pantallas pequeñas */
-
-@media (max-width: 700px) {
-    .banner {
-        min-height: 260px;
-    }
-
-    .banner::before {
-        background-attachment: scroll;
-    }
-
-    .banner-contenido {
-        width: calc(100% - 40px);
-        padding: 25px 0;
-    }
-
-    #banner-a h2 {
-        max-width: 300px;
-    }
-}
-
-/* Acabado visual definitivo de los banners */
-
-#banner-a h2 {
-    font-size: clamp(34px, 4vw, 52px);
-    font-weight: 300;
-    letter-spacing: -1.5px;
-    line-height: 1.12;
-}
-
-#banner-a .banner-categoria {
-    color: #dfc18a;
-}
-
-#banner-a .banner-boton {
-    border: 1px solid #e9bb54;
-    border-radius: 999px;
-    color: #fff1cb;
-    background: linear-gradient(
-        135deg,
-        rgba(204, 147, 35, 0.42),
-        rgba(71, 47, 13, 0.62)
-    );
-    box-shadow:
-        inset 0 1px 0 rgba(255, 231, 158, 0.45),
-        0 0 16px rgba(230, 169, 53, 0.20);
-}
-
-#banner-a .banner-boton:hover {
-    background: #c69a43;
-    color: #111;
-    box-shadow: 0 0 22px rgba(230, 169, 53, 0.42);
-}
-
-#banner-b h2 {
-    font-size: clamp(40px, 4.5vw, 58px);
-    font-weight: 400;
-    letter-spacing: -1px;
-}
-
-#banner-b .banner-boton {
-    border: 1px solid #b82d43;
-    border-radius: 999px;
-    color: #ffe1e5;
-    background: linear-gradient(
+    --boton-borde: #b82d43;
+    --boton-color: #ffe1e5;
+    --boton-fuente: Arial, sans-serif;
+    --boton-fondo: linear-gradient(
         135deg,
         rgba(133, 19, 39, 0.72),
         rgba(40, 5, 12, 0.75)
     );
-    box-shadow:
-        inset 0 1px 0 rgba(255, 160, 170, 0.25),
+    --boton-sombra: inset 0 1px 0 rgba(255, 160, 170, 0.25),
         0 0 16px rgba(175, 22, 51, 0.25);
+    --boton-fondo-hover: #8f2037;
+    --boton-color-hover: #fff;
+    --boton-sombra-hover: 0 0 22px rgba(190, 35, 65, 0.45);
 }
 
-#banner-b .banner-boton:hover {
-    background: #8f2037;
-    color: #fff;
-    box-shadow: 0 0 22px rgba(190, 35, 65, 0.45);
-}
-/* BODA: elegancia, luz y romanticismo */
-
-#banner-c {
-    background: #eadbcd;
-    color: #49372f;
-    font-family: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
-}
-
-#banner-c::before {
-    background-image: url("../img/boda.jpg");
-    background-size: cover;
-    background-position: center center;
-    
-}
-
- /*BODA: degradado original, conservado para pruebas*/
-#banner-c::after {
-    background: linear-gradient(
+/* 3C. BODA — tonos claros, romanticismo, degradado propio */
+.banner--boda {
+    --fondo-valla: #eadbcd;
+    --texto-valla: #49372f;
+    --fuente-valla: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+    --imagen: url("../img/boda.jpg");
+    --posicion-imagen: center center;
+    --posicion-imagen-movil: 65% center;
+    --capa-legibilidad: linear-gradient(
         90deg,
         rgba(250, 243, 232, 0.83) 0%,
         rgba(250, 243, 232, 0.58) 34%,
         rgba(250, 243, 232, 0.06) 66%,
         transparent 100%
     );
+    --capa-legibilidad-movil: linear-gradient(
+        90deg,
+        rgba(250, 243, 232, 0.92),
+        rgba(250, 243, 232, 0.40)
+    );
+
+    --categoria-color: #826a58;
+    --categoria-fuente: Arial, sans-serif;
+    --titulo-ancho: 430px;
+    --titulo-ancho-movil: 300px;
+    --titulo-tamano: clamp(35px, 4vw, 53px);
+    --titulo-peso: 400;
+    --titulo-espaciado: -1.4px;
+    --titulo-interlineado: 1.12;
+    --titulo-color: #513b32;
+    --descripcion-color: #68564b;
+
+    --boton-borde: #a58a75;
+    --boton-color: #5b4436;
+    --boton-fuente: Arial, sans-serif;
+    --boton-fondo: rgba(255, 250, 243, 0.65);
+    --boton-sombra: 0 3px 15px rgba(91, 68, 54, 0.10);
+    --boton-fondo-hover: #806452;
+    --boton-color-hover: #fffaf3;
+    --boton-borde-hover: #806452;
 }
 
-
-#banner-c .banner-categoria {
-    color: #826a58;
-    font-family: Arial, sans-serif;
-}
-
-#banner-c h2 {
-    max-width: 430px;
-    font-size: clamp(35px, 4vw, 53px);
-    font-weight: 400;
-    letter-spacing: -1.4px;
-    line-height: 1.12;
-    color: #513b32;
-}
-
-#banner-c p {
-    color: #68564b;
-}
-
-#banner-c .banner-boton {
-    border: 1px solid #a58a75;
-    border-radius: 999px;
-    color: #5b4436;
-    background: rgba(255, 250, 243, 0.65);
-    box-shadow: 0 3px 15px rgba(91, 68, 54, 0.10);
-    text-decoration: none;
-    font-family: Arial, sans-serif;
-}
-
-#banner-c .banner-boton:hover {
-    background: #806452;
-    color: #fffaf3;
-    border-color: #806452;
-}
-/*banner C*/
+/* 4. RESPONSIVE — una sola ubicación para reglas móviles */
 @media (max-width: 700px) {
-    #banner-c::before {
-        background-position: 65% center;
+    .banner::before {
+        background-attachment: scroll;
+        background-position: var(--posicion-imagen-movil, var(--posicion-imagen, center));
     }
 
-    #banner-c::after {
-        background: linear-gradient(
-            90deg,
-            rgba(250, 243, 232, 0.92),
-            rgba(250, 243, 232, 0.40)
-        );
+    .banner::after {
+        background: var(--capa-legibilidad-movil, var(--capa-legibilidad, none));
     }
 
-    #banner-c h2 {
-        max-width: 300px;
+    .banner-contenido {
+        width: calc(100% - 40px);
+        /* Conserva el mismo aire vertical de los 260 px aprobados */
+    }
+
+    .banner h2 {
+        max-width: var(--titulo-ancho-movil, var(--titulo-ancho, none));
+    }
+}
+/* Botones compactos en pantallas muy estrechas */
+@media (max-width: 360px) {
+
+    .banner-boton {
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        gap: 0;
+        font-size: 0;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .banner-boton [aria-hidden="true"] {
+        font-size: 20px;
+        line-height: 1;
     }
 }
