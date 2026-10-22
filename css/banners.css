@@ -52,7 +52,7 @@
     background-size: cover;
     background-attachment: fixed;
     filter: blur(var(--desenfoque, 2px));
-    background-image: var(--imagen, none);
+    background-image: var(--imagen, none);    
 }
 
 /* Oscurecimiento/aclarado exclusivo de cada proyecto */
@@ -63,6 +63,7 @@
     z-index: -1;
     pointer-events: none;
     background: var(--capa-legibilidad, none);
+    box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.45);    
 }
 
 .banner-contenido {
