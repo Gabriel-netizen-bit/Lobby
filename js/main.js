@@ -44,6 +44,13 @@ let idioma = localStorage.getItem("lobby-language") || "es";
 
 function actualizarIdioma() {
     document.documentElement.lang = idioma;
+    // Mantener el idioma al entrar a Cines
+const enlaceCines = document.querySelector("#banner-b a.banner-boton");
+
+if (enlaceCines) {
+    enlaceCines.href =
+        "https://gabriel-netizen-bit.github.io/Cines-Lobby/?lang=" + idioma;
+}
     /* Seleccionar el currículum según el idioma */
 const descargarCV = document.getElementById("descargar-cv");
 
