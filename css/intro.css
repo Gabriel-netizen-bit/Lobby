@@ -1,7 +1,21 @@
-
 #presentacion {
     text-align: center;
     padding: 75px 20px 85px;
+
+    background:
+    linear-gradient(
+        to right,
+        rgba(65, 75, 90, 0.25) 0%,
+        transparent 30%,
+        transparent 70%,
+        rgba(65, 75, 90, 0.25) 100%
+    ),
+    var(--fondo);    
+}
+
+/* Modo oscuro: conservar el fondo original */
+[data-theme="dark"] #presentacion {
+    background: var(--fondo);
 }
 
 #presentacion h1 {
@@ -39,4 +53,3 @@
 #presentacion .acento {
     color: #FF5360;
 }
-

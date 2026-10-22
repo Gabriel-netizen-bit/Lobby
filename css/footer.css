@@ -1,5 +1,13 @@
 .site-footer {
-    background-color: var(--fondo);
+    background:
+    linear-gradient(
+        to right,
+        rgba(65, 75, 90, 0.25) 0%,
+        transparent 30%,
+        transparent 70%,
+        rgba(65, 75, 90, 0.25) 100%
+    ),
+    var(--fondo);
     color: var(--texto-secundario);
     min-height: 152px;
     padding: 20px 40px;
@@ -51,4 +59,8 @@
     /*footer {
         margin-bottom: 200px;
     }*/
+}
+/* Conservar el fondo original en modo oscuro */
+[data-theme="dark"] .site-footer {
+    background: var(--fondo);
 }
